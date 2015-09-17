@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>Paycheck If </title>
+<script>
+/*
+    Jose Roman
+    Created: 09/16/15
+    Purpose: if/else paycheck
+*/
+</script>
+</head>
+
+<body>
+    <script>
+        
+        //Declare variables
+        var hrWkd    =   prompt("Enter the hours worked?");
+        var payRate  = prompt("Enter your pay rate per hour?");
+        var dTime    =  payRate  * 2; //Double Time
+        var tTime    = payRate   * 3; //Triple time
+        var payCheck = 0;
+        
+        //calculate payckeck using if operators
+        if (hrWkd >= 40)               payCheck = ((hrWkd - 40) * tTime) + ( 20 * dTime) + (20 * payRate);
+        if (hrWkd > 20 && hrWkd < 40)  payCheck = ((hrWkd - 20) * dTime) + ( 20 * payRate);
+        if (hrWkd <= 20)               payCheck = hrWkd * payRate;
+   
+        document.write("<p>Your Paycheck is $" + payCheck + "</p>"); //Print payCheck
+    </script>
+</body>
+</html>
