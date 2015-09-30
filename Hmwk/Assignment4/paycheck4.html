@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <title>Pay Check</title>
+    <script>
+	/*
+		Jose Roman
+		Sept 21st, 2015
+		Purpose: Assignment 4
+
+		Used Dr. Lehr example to complete this assignment.
+	*/
+	</script>
+    </head>
+    
+    <body>
+    	<h1>Assignment 4</h1>
+    <table width="200" border="1">
+        <tr style="background-color:gray; color: black">
+          <th>Hours</th>
+          <th>Gross Pay</th>
+          <th>Pay Rate</th>
+          <th>Taxes</th>
+          <th>Net Pay</th>
+        </tr>
+        <script>
+			//Declare variables
+			var payRate=prompt("Input your pay rate per hours in $?");
+			var nHours=72;//Total number of hours in table
+			var dblTim=20;//Double time starts
+			var trpTim=40;//Triple time starts
+			
+			//Declare 1-Dim arrays
+			var hrsWrkd=[];//Hours Worked
+			var payChk=[];//Gross Pay
+			var pRate=[];//Rate per hour
+			var taxes=[];//10%
+			var totalPay=[];//Net pay
+			
+			//Fill the 1-Dim parallel array with data
+			for(var hours=0;hours<=nHours;hours++){
+			  hrsWrkd[hours]=hours;
+			  if(hours<=dblTim){
+				   payChk[hours]=hours*payRate;
+				   pRate[hours]=payRate;
+				   taxes[hours]=payChk[hours]/10;
+				   totalPay[hours]=payChk[hours]-taxes[hours];
+			 
+			  }else if(hours<trpTim){
+				   payChk[hours]=dblTim*payRate+(hours-dblTim)*2*payRate;
+				   pRate[hours]=payRate*2;
+				   taxes[hours]=payChk[hours]/10;
+				   totalPay[hours]=payChk[hours]-taxes[hours];
+			 
+			 }else{
+				   payChk[hours]=dblTim*payRate+(trpTim-dblTim)*2*payRate+(hours-trpTim)*3*payRate;
+				   pRate[hours]=payRate*3;
+				   taxes[hours]=payChk[hours]/10;
+				   totalPay[hours]=payChk[hours]-taxes[hours];
+			  }
+			}
+			//Display the arrays
+			for(var hours=0;hours<=nHours;hours++){
+				document.write("<tr>");
+				  document.write("<td>"+hrsWrkd[hours]+"</td>");
+				  document.write("<td>$"+payChk[hours].toFixed(2)+"</td>");
+				  document.write("<td>"+pRate[hours]+"/hr</td>");
+				  document.write("<td>$"+taxes[hours].toFixed(2)+"</td>");
+				  document.write("<td>$"+totalPay[hours].toFixed(2)+"</td>");
+				document.write("</tr>");
+			}
+		</script>
+	</table>
+    </body>
+</html>
